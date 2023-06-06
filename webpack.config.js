@@ -27,7 +27,7 @@ const OptimizationMap = {
     development: {
         chunkIds: 'named',
         moduleIds: 'named',
-        usedExports: true, // 树摇
+        usedExports: false, // 树摇
         splitChunks: {
             chunks: 'all',
             minSize: 1024 * 20,
@@ -145,9 +145,7 @@ const config = {
             favicon: path.resolve(__dirname, './public/favicon.ico'),
         }),
         new CopyPlugin({
-            patterns: [
-                { from: path.resolve(__dirname, 'public'), to: 'public' },
-            ],
+            patterns: [{ from: path.resolve(__dirname, 'public'), to: 'public' }],
         }),
     ],
     module: {
