@@ -92,7 +92,7 @@ const OptimizationMap = {
 const config = {
     mode: modeMap[NODE_ENV] || 'development',
     stats: 'errors-only',
-    entry: './src/app.js',
+    entry: './src/entry-client.js',
     infrastructureLogging: {
         level: 'error',
     },
