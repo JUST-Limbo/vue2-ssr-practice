@@ -92,7 +92,7 @@ const OptimizationMap = {
 const config = {
     mode: modeMap[NODE_ENV] || 'development',
     stats: 'errors-only',
-    entry: './src/main.js',
+    entry: './src/app.js',
     infrastructureLogging: {
         level: 'error',
     },
@@ -141,7 +141,7 @@ const config = {
         new VueLoaderPlugin(),
         new WebpackBar(),
         new HtmlWebpackPlugin({
-            template: './public/index.html',
+            template: './public/index.spa.html',
             favicon: path.resolve(__dirname, './public/favicon.ico'),
         }),
         new CopyPlugin({
