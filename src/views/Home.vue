@@ -1,9 +1,9 @@
 <template>
 	<div class="home">
 		<div @click="push">
-			push /Params
+			push /bbbb
 		</div>
-    <button @click="$toast">toast</button>
+    <!-- <button @click="$toast">to123123123ast</button> -->
 	</div>
 </template>
 
