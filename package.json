@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "dev:ssr": "cross-env NODE_ENV=development node server",
-        "dev:spa": "webpack serve --node-env development --env APP_ENV=development",
+        "dev:spa": "webpack serve --node-env development --env APP_ENV=development --config ./build/webpack.spa.config.js",
         "build:client": "webpack --node-env production --env APP_ENV=development --config ./build/webpack.client.config.js",
         "build:server": "webpack --node-env production --env APP_ENV=development --config ./build/webpack.server.config.js",
         "build": "npm run build:server && npm run build:client",

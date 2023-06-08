@@ -97,7 +97,7 @@ const config = {
         level: 'error',
     },
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, '../dist'),
         publicPath: '/',
         filename: isProduction ? 'js/[name].[contenthash:6].bundle.js' : 'js/[name].bundle.js',
         chunkFilename: isProduction ? 'js/chunk_[name]_[contenthash:6].js' : 'js/chunk_[name].js',
@@ -132,7 +132,7 @@ const config = {
     resolve: {
         extensions: ['.js', '.vue', '.json', '.ts', '.html'],
         alias: {
-            '@': path.resolve(__dirname, 'src'),
+            '@': path.resolve(__dirname, '../src'),
             vue$: 'vue/dist/vue.esm.js',
         },
     },
@@ -142,10 +142,10 @@ const config = {
         new WebpackBar(),
         new HtmlWebpackPlugin({
             template: './public/index.spa.html',
-            favicon: path.resolve(__dirname, './public/favicon.ico'),
+            favicon: path.resolve(__dirname, '../public/favicon.ico'),
         }),
         new CopyPlugin({
-            patterns: [{ from: path.resolve(__dirname, 'public'), to: 'public' }],
+            patterns: [{ from: path.resolve(__dirname, '../public'), to: 'public' }],
         }),
     ],
     module: {
@@ -153,7 +153,7 @@ const config = {
             // vue-loader必须要在最外层,不能放入oneOf
             {
                 test: /\.vue$/i,
-                include: [path.resolve(__dirname, 'src')],
+                include: [path.resolve(__dirname, '../src')],
                 exclude: /node_modules/,
                 use: ['vue-loader'],
             },
