@@ -61,7 +61,6 @@ module.exports = function setupDevServer(app, templatePath, cb) {
 	app.use(devMiddleware)
 	clientCompiler.hooks.done.tap("done", (stats) => {
 		stats = stats.toJson()
-		fs.writeFileSync("./1.json", JSON.stringify(stats), "utf8")
 		stats.errors.forEach((err) => console.error(err))
 		stats.warnings.forEach((err) => console.warn(err))
 		if (stats.errors.length) return
