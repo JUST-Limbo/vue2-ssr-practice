@@ -41,7 +41,7 @@ module.exports = function setupDevServer(app, templatePath, cb) {
 	template = fs.readFileSync(templatePath, "utf-8")
 	chokidar.watch(templatePath).on("change", () => {
 		template = fs.readFileSync(templatePath, "utf-8")
-		console.log("index.ssr.html template updated.")
+		// console.log("index.ssr.html template updated.")
 		update()
 	})
 
@@ -51,7 +51,7 @@ module.exports = function setupDevServer(app, templatePath, cb) {
 	clientConfig.plugins.push(new webpack.HotModuleReplacementPlugin(), new webpack.NoEmitOnErrorsPlugin())
 
 	// dev middleware
-     console.log("clientCompiler start")
+	//  console.log("clientCompiler start")
 	const clientCompiler = webpack(clientConfig)
 	const devMiddleware = require("webpack-dev-middleware")(clientCompiler, {
 		publicPath: clientConfig.output.publicPath,
@@ -66,17 +66,17 @@ module.exports = function setupDevServer(app, templatePath, cb) {
 		if (stats.errors.length) return
 		clientManifest = JSON.parse(readFile(devMiddleware.context.outputFileSystem, "vue-ssr-client-manifest.json"))
 		update()
-        console.log("clientCompiler success")
+		// console.log("clientCompiler success")
 	})
 
 	// hot middleware
-	app.use(require("webpack-hot-middleware")(clientCompiler, { heartbeat: 5000 }))
+	app.use(require("webpack-hot-middleware")(clientCompiler, { heartbeat: 5000, log: false }))
 
 	// watch and update server renderer
-    console.log("serverCompiler start")
+	// console.log("serverCompiler start")
 	const serverCompiler = webpack(serverConfig)
 	serverCompiler.hooks.done.tap("done", (stats) => {
-		console.log("serverCompiler success")
+		// console.log("serverCompiler success")
 	})
 	const mfs = new MFS()
 	serverCompiler.outputFileSystem = mfs

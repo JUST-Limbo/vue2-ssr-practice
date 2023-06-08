@@ -8,6 +8,7 @@ const microcache = require("route-cache")
 const resolve = (file) => path.resolve(__dirname, file)
 const { createBundleRenderer } = require("vue-server-renderer")
 
+const { defaultPort } = require("./build/setting")
 const isProd = process.env.NODE_ENV === "production"
 const useMicroCache = process.env.MICRO_CACHE !== "false"
 const serverInfo = `express/${require("express/package.json").version} ` + `vue-server-renderer/${require("vue-server-renderer/package.json").version}`
@@ -104,9 +105,8 @@ function render(req, res) {
 			return handleError(err)
 		}
 		res.send(html)
-        console.log(`whole request: ${Date.now() - s}ms`)
 		if (!isProd) {
-			console.log(`whole request: ${Date.now() - s}ms`)
+			// console.log(`whole request: ${Date.now() - s}ms`)
 		}
 	})
 }
@@ -120,7 +120,7 @@ app.get(
 		  }
 )
 
-const port = process.env.PORT || 9500
+const port = process.env.PORT || defaultPort
 app.listen(port, () => {
-	console.log(`server started at localhost:${port}`)
+	// console.log(`server started at localhost:${port}`)
 })

@@ -4,12 +4,11 @@
     "description": "My webpack project",
     "main": "index.js",
     "scripts": {
-        "start": "cross-env NODE_ENV=development node server",
+        "dev:ssr": "cross-env NODE_ENV=development node server",
+        "dev:spa": "webpack serve --node-env development --env APP_ENV=development",
         "build:client": "webpack --node-env production --env APP_ENV=development --config ./build/webpack.client.config.js",
         "build:server": "webpack --node-env production --env APP_ENV=development --config ./build/webpack.server.config.js",
-        "dev": "webpack serve --node-env development --env APP_ENV=development",
         "build": "npm run build:server && npm run build:client",
-        "preview": "serve -s dist",
         "app-info": "node ./build/generateAppInfo.js"
     },
     "keywords": [],

@@ -1,7 +1,6 @@
 const path = require("path")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
-const WebpackBar = require("webpackbar")
 const portfinder = require("portfinder")
 const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin")
 const address = require("address")
@@ -140,7 +139,6 @@ const config = {
 	optimization: OptimizationMap[NODE_ENV],
 	plugins: [
 		new VueLoaderPlugin(),
-		new WebpackBar(),
 		new CopyPlugin({
 			patterns: [{ from: path.resolve(__dirname, "../public"), to: "public" }]
 		})

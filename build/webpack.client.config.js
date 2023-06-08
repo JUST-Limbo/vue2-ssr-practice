@@ -4,6 +4,7 @@ const VueSSRClientPlugin = require("vue-server-renderer/client-plugin")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const Dotenv = require("dotenv-webpack")
 const CompressionPlugin = require("compression-webpack-plugin")
+const WebpackBar = require("webpackbar")
 
 const NODE_ENV = process.env.NODE_ENV
 const isProd = NODE_ENV == "production"
@@ -12,7 +13,13 @@ const clientConfig = {
 	entry: {
 		app: "./src/entry-client.js"
 	},
-	plugins: [new VueSSRClientPlugin()]
+	plugins: [
+		new VueSSRClientPlugin(),
+		new WebpackBar({
+			name: "Client",
+			color: "#7ED321"
+		})
+	]
 }
 
 module.exports = (env, args) => {

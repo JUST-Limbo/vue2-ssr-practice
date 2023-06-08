@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const pkg = require("../package.json");
 
-// 要判断一次路径?
+// 要判断一次路径存在?
 const versionDocPath = path.resolve(__dirname, "../dist/public/version.json");
 
 const lastBuildTimeStamp = new Date().toLocaleString();

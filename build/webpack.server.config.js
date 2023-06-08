@@ -5,6 +5,11 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const VueSSRServerPlugin = require("vue-server-renderer/server-plugin")
 const Dotenv = require("dotenv-webpack")
 const CompressionPlugin = require("compression-webpack-plugin")
+const WebpackBar = require("webpackbar")
+const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin")
+const chalk = require("chalk")
+const { defaultPort } = require("./setting")
+const address = require("address")
 
 const fs = require("fs")
 
@@ -27,7 +32,13 @@ const serverConfig = {
 	externals: nodeExternals({
 		allowlist: [/\.css$/]
 	}),
-	plugins: [new VueSSRServerPlugin()]
+	plugins: [
+		new VueSSRServerPlugin(),
+		new WebpackBar({
+			name: "Server",
+			color: "#F5A623"
+		})
+	]
 }
 
 module.exports = (env, args) => {
@@ -45,6 +56,16 @@ module.exports = (env, args) => {
 			new CompressionPlugin({
 				test: /\.(css|js)$/,
 				minRatio: 0.7
+			})
+		)
+	} else {
+		const LOCAL_IP = address.ip()
+		serverConfig.plugins.push(
+			new FriendlyErrorsWebpackPlugin({
+				compilationSuccessInfo: {
+					messages: [`  App running at:`, `  - Local:   ` + chalk.cyan(`http://localhost:${defaultPort}`), `  - Network: ` + chalk.cyan(`http://${LOCAL_IP}:${defaultPort}`)]
+				},
+				clearConsole: true
 			})
 		)
 	}

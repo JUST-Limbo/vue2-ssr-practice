@@ -1,7 +1,7 @@
 <template>
 	<div class="home">
 		<div @click="push">
-			123123123121231231233123 /bbbb
+            BBB
 		</div>
     <!-- <button @click="$toast">to123123123ast</button> -->
 	</div>
