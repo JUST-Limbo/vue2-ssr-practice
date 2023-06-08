@@ -2,7 +2,6 @@
     <div class="home">
         <div @click="push" class="red">BBB</div>
         <div>11231223123</div>
-        {{txt}}
         <!-- <button @click="$toast">to123123123ast</button> -->
     </div>
 </template>
@@ -12,21 +11,6 @@
 
 export default {
     name: 'Home',
-    data(){
-        return {
-            txt:''
-        }
-    },
-    asyncData(){
-        console.log(123,typeof window)
-    },
-    created() {
-        console.log('create')
-        if (typeof window == 'undefined') {
-            console.log(1)
-            this.txt = 'server';
-        }
-    },
     methods: {
         push() {
             this.$router.push({
