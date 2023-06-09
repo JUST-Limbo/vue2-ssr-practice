@@ -8,7 +8,7 @@
         "dev:spa": "webpack serve --node-env development --env APP_ENV=development --config ./build/webpack.spa.config.js",
         "build:client": "webpack --node-env production --env APP_ENV=development --config ./build/webpack.client.config.js",
         "build:server": "webpack --node-env production --env APP_ENV=development --config ./build/webpack.server.config.js",
-        "build": "npm run build:server && npm run build:client",
+        "build": "concurrently \"npm run build:server\" \"npm run build:client\"",
         "preview": "cross-env NODE_ENV=production node server",
         "app-info": "node ./build/generateAppInfo.js"
     },
@@ -55,6 +55,7 @@
     },
     "dependencies": {
         "compression": "^1.7.4",
+        "concurrently": "^8.1.0",
         "cross-env": "^7.0.3",
         "express": "^4.18.2",
         "lru-cache": "^9.1.2",
