@@ -7,8 +7,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
-
 export default {
     name: 'Home',
     methods: {
@@ -27,6 +25,6 @@ export default {
 
 <style lang="scss" scoped>
 .red {
-    color: blue;
+    color: red;
 }
 </style>

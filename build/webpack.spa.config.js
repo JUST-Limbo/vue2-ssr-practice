@@ -113,7 +113,7 @@ const config = {
         hot: true,
         compress: true,
         host: '0.0.0.0',
-        port: '9191',
+        port: '9800',
         open: false,
         client: {
             logging: 'error',

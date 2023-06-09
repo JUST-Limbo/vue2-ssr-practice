@@ -4,10 +4,8 @@ import { createRouter } from './router';
 import { createStore } from './store';
 import { sync } from 'vuex-router-sync';
 
-// import toastReg from './components/toast/toast';
-// Vue.use(toastReg);
-
-// Vue.config.productionTip = false;
+Vue.config.productionTip = false;
+Vue.config.devtools = true
 
 export function createApp() {
     // 创建 router 和 store 实例
