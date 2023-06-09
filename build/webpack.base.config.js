@@ -119,6 +119,8 @@ const config = {
 	module: {
 		rules: [
 			// vue-loader必须要在最外层,不能放入oneOf
+			// https://github.com/vuejs/vue-loader/issues/1204#issuecomment-375739662
+			// Note the rule for vue-loader must be at the top level
 			{
 				test: /\.vue$/i,
 				include: [path.resolve(__dirname, "../src")],
