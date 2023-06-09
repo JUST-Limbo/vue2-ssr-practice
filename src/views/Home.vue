@@ -1,30 +1,17 @@
 <template>
-    <div class="home">
-        <div @click="push" class="red">BBB</div>
-        <div>11231223123</div>
-        <!-- <button @click="$toast">to123123123ast</button> -->
-    </div>
+	<div class="home">
+		<div class="red">11231223123</div>
+	</div>
 </template>
 
 <script>
 export default {
-    name: 'Home',
-    methods: {
-        push() {
-            this.$router.push({
-                name: 'routerParams',
-                params: {
-                    a: 1,
-                    c: 1,
-                },
-            });
-        },
-    },
-};
+	name: "Home"
+}
 </script>
 
 <style lang="scss" scoped>
 .red {
-    color: red;
+	color: red;
 }
 </style>
