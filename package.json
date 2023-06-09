@@ -9,6 +9,7 @@
         "build:client": "webpack --node-env production --env APP_ENV=development --config ./build/webpack.client.config.js",
         "build:server": "webpack --node-env production --env APP_ENV=development --config ./build/webpack.server.config.js",
         "build": "npm run build:server && npm run build:client",
+        "preview": "cross-env NODE_ENV=production node server",
         "app-info": "node ./build/generateAppInfo.js"
     },
     "keywords": [],
@@ -57,6 +58,7 @@
         "cross-env": "^7.0.3",
         "express": "^4.18.2",
         "lru-cache": "^9.1.2",
+        "portfinder-sync": "^0.0.2",
         "route-cache": "^0.5.0",
         "serve-favicon": "^2.5.0",
         "vue": "2.6",

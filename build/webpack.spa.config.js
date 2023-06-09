@@ -14,14 +14,14 @@ const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 
 const NODE_ENV = process.env.NODE_ENV;
-const isProduction = NODE_ENV == 'production';
+const isProd = NODE_ENV == 'production';
 
 const modeMap = {
     production: 'production',
     development: 'development',
 };
 
-const stylesHandler = isProduction ? MiniCssExtractPlugin.loader : 'vue-style-loader';
+const stylesHandler = isProd ? MiniCssExtractPlugin.loader : 'vue-style-loader';
 
 const OptimizationMap = {
     development: {
@@ -99,8 +99,8 @@ const config = {
     output: {
         path: path.resolve(__dirname, '../dist'),
         publicPath: '/',
-        filename: isProduction ? 'js/[name].[contenthash:6].bundle.js' : 'js/[name].bundle.js',
-        chunkFilename: isProduction ? 'js/chunk_[name]_[contenthash:6].js' : 'js/chunk_[name].js',
+        filename: isProd ? 'js/[name].[contenthash:6].bundle.js' : 'js/[name].bundle.js',
+        chunkFilename: isProd ? 'js/chunk_[name]_[contenthash:6].js' : 'js/chunk_[name].js',
         clean: true, // 在生成文件之前清空 output 目录
     },
     cache: {
@@ -217,7 +217,7 @@ module.exports = (env, argv) => {
         })
     );
     return new Promise((resolve) => {
-        if (isProduction) {
+        if (isProd) {
             config.plugins.push(
                 new MiniCssExtractPlugin({
                     filename: 'styles/[name].[contenthash:6].css',

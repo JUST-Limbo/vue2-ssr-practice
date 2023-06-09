@@ -3,22 +3,26 @@ const path = require("path")
 const MFS = require("memory-fs")
 const webpack = require("webpack")
 const chokidar = require("chokidar")
-const clientConfig = require("./webpack.client.config")({
-	APP_ENV: "development"
-})
-const serverConfig = require("./webpack.server.config")({
-	APP_ENV: "development"
-})
 
-const readFile = (fs, file) => {
-	try {
-		return fs.readFileSync(path.join(clientConfig.output.path, file), "utf-8")
-	} catch (e) {
-		console.log(e)
+module.exports = function setupDevServer(app, templatePath, cb, port) {
+	const clientConfig = require("./webpack.client.config")({
+		APP_ENV: "development"
+	})
+	const serverConfig = require("./webpack.server.config")(
+		{
+			APP_ENV: "development"
+		},
+		{ port }
+	)
+
+	const readFile = (fs, file) => {
+		try {
+			return fs.readFileSync(path.join(clientConfig.output.path, file), "utf-8")
+		} catch (e) {
+			console.log(e)
+		}
 	}
-}
 
-module.exports = function setupDevServer(app, templatePath, cb) {
 	let bundle
 	let template
 	let clientManifest

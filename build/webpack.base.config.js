@@ -1,26 +1,19 @@
 const path = require("path")
-const HtmlWebpackPlugin = require("html-webpack-plugin")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
-const portfinder = require("portfinder")
-const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin")
-const address = require("address")
-const chalk = require("chalk")
 const { VueLoaderPlugin } = require("vue-loader")
-// const Dotenv = require("dotenv-webpack")
 const CopyPlugin = require("copy-webpack-plugin")
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin")
 const TerserPlugin = require("terser-webpack-plugin")
-const CompressionPlugin = require("compression-webpack-plugin")
 
 const NODE_ENV = process.env.NODE_ENV
-const isProduction = NODE_ENV == "production"
+const isProd = NODE_ENV == "production"
 
 const modeMap = {
 	production: "production",
 	development: "development"
 }
 
-const stylesHandler = isProduction ? MiniCssExtractPlugin.loader : "vue-style-loader"
+const stylesHandler = isProd ? MiniCssExtractPlugin.loader : "vue-style-loader"
 
 const OptimizationMap = {
 	development: {
@@ -100,8 +93,8 @@ const config = {
 	output: {
 		path: path.resolve(__dirname, "../dist"),
 		publicPath: "/dist/",
-		filename: isProduction ? "js/[name].[contenthash:6].bundle.js" : "js/[name].bundle.js",
-		chunkFilename: isProduction ? "js/chunk_[name]_[contenthash:6].js" : "js/chunk_[name].js"
+		filename: isProd ? "js/[name].[contenthash:6].bundle.js" : "js/[name].bundle.js",
+		chunkFilename: isProd ? "js/chunk_[name]_[contenthash:6].js" : "js/chunk_[name].js"
 	},
 	cache: {
 		type: "filesystem",
@@ -109,26 +102,6 @@ const config = {
 			config: [__filename]
 		}
 	},
-	// devServer: {
-	// 	hot: true,
-	// 	compress: true,
-	// 	host: "0.0.0.0",
-	// 	port: "9191",
-	// 	open: false,
-	// 	client: {
-	// 		logging: "error",
-	// 		overlay: false
-	// 	},
-	// 	liveReload: false,
-	// 	historyApiFallback: {
-	// 		rewrites: [
-	// 			{
-	// 				from: /\//,
-	// 				to: "/index.html"
-	// 			}
-	// 		]
-	// 	}
-	// },
 	resolve: {
 		extensions: [".js", ".vue", ".json", ".ts", ".html"],
 		alias: {
@@ -205,49 +178,3 @@ const config = {
 }
 
 module.exports = config
-// module.exports = (env, argv) => {
-// 	// const APP_ENV = env.APP_ENV || "development"
-// 	// config.plugins.push(
-// 	// 	new Dotenv({
-// 	// 		path: `../.env.${APP_ENV}`
-// 	// 	})
-// 	// )
-// 	return new Promise((resolve) => {
-// 		if (isProduction) {
-// 			config.plugins.push(
-// 				new MiniCssExtractPlugin({
-// 					filename: "styles/[name].[contenthash:6].css"
-// 				}),
-// 				new CompressionPlugin({
-// 					test: /\.(css|js)$/,
-// 					minRatio: 0.7
-// 				})
-// 			)
-// 			resolve(config)
-// 		} else {
-// 			config.devtool = "cheap-module-source-map"
-// 			portfinder.basePort = config.devServer.port
-// 			portfinder.getPort((err, port) => {
-// 				if (err) {
-// 					reject(err)
-// 				} else {
-// 					const LOCAL_IP = address.ip()
-// 					// publish the new Port, necessary for e2e tests
-// 					process.env.PORT = port
-// 					// add port to devServer config,主要是这一步更新可用的端口
-// 					config.devServer.port = port
-// 					// Add FriendlyErrorsPlugin
-// 					config.plugins.push(
-// 						new FriendlyErrorsWebpackPlugin({
-// 							compilationSuccessInfo: {
-// 								messages: [`  App running at:`, `  - Local:   ` + chalk.cyan(`http://localhost:${port}`), `  - Network: ` + chalk.cyan(`http://${LOCAL_IP}:${port}`)]
-// 							},
-// 							clearConsole: true
-// 						})
-// 					)
-// 					resolve(config)
-// 				}
-// 			})
-// 		}
-// 	})
-// }

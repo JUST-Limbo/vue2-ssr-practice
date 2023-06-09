@@ -11,12 +11,10 @@ const chalk = require("chalk")
 const { defaultPort } = require("./setting")
 const address = require("address")
 
-const fs = require("fs")
-
 delete base.optimization
 
 const NODE_ENV = process.env.NODE_ENV
-const isProduction = NODE_ENV == "production"
+const isProd = NODE_ENV == "production"
 const serverConfig = {
 	target: "node",
 	devtool: "cheap-module-source-map",
@@ -48,7 +46,7 @@ module.exports = (env, args) => {
 			path: `./envVariable/server/.env.${APP_ENV}`
 		})
 	)
-	if (isProduction) {
+	if (isProd) {
 		serverConfig.plugins.push(
 			new MiniCssExtractPlugin({
 				filename: "styles/[name].[contenthash:6].css"
@@ -59,11 +57,12 @@ module.exports = (env, args) => {
 			})
 		)
 	} else {
+		const port = args.port || defaultPort
 		const LOCAL_IP = address.ip()
 		serverConfig.plugins.push(
 			new FriendlyErrorsWebpackPlugin({
 				compilationSuccessInfo: {
-					messages: [`  App running at:`, `  - Local:   ` + chalk.cyan(`http://localhost:${defaultPort}`), `  - Network: ` + chalk.cyan(`http://${LOCAL_IP}:${defaultPort}`)]
+					messages: [`  App running at:`, `  - Local:   ` + chalk.cyan(`http://localhost:${port}`), `  - Network: ` + chalk.cyan(`http://${LOCAL_IP}:${port}`)]
 				},
 				clearConsole: true
 			})

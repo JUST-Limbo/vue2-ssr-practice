@@ -40,6 +40,8 @@ module.exports = (env, args) => {
 				minRatio: 0.7
 			})
 		)
+	} else {
+		clientConfig.devtool = "cheap-module-source-map"
 	}
 	return merge(base, clientConfig)
 }
