@@ -75,8 +75,9 @@ app.use(compression({ threshold: 0 }))
 app.use(favicon("./public/favicon.ico"))
 app.use("/dist", serve("../dist", true))
 app.use("/public", serve("../public", true))
-app.use("/manifest.json", serve("../manifest.json", true))
-app.use("/service-worker.js", serve("../dist/service-worker.js"))
+app.use("/manifest.json", serve("../dist/manifest.json", true))
+// 缓存
+// app.use("/service-worker.js", serve("../dist/service-worker.js"))
 
 // since this app has no user-specific content, every page is micro-cacheable.
 // if your app involves user-specific content, you need to implement custom
