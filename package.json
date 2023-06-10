@@ -6,9 +6,11 @@
     "scripts": {
         "dev:ssr": "cross-env NODE_ENV=development node server",
         "dev:spa": "webpack serve --node-env development --env APP_ENV=development --config ./build/webpack.spa.config.js",
-        "build:client": "webpack --node-env production --env APP_ENV=development --config ./build/webpack.client.config.js",
-        "build:server": "webpack --node-env production --env APP_ENV=development --config ./build/webpack.server.config.js",
-        "build": "concurrently \"npm run build:server\" \"npm run build:client\"",
+        "build:client": "webpack --node-env production --env APP_ENV=production --config ./build/webpack.client.config.js",
+        "build:server": "webpack --node-env production --env APP_ENV=production --config ./build/webpack.server.config.js",
+        "build:ssr": "concurrently \"npm run build:server\" \"npm run build:client\"",
+        "build:spa": "webpack --node-env production --env APP_ENV=production --config ./build/webpack.spa.config.js",
+        "build:all": "concurrently \"npm run build:ssr\" \"npm run build:spa\"",
         "preview": "cross-env NODE_ENV=production node server",
         "app-info": "node ./build/generateAppInfo.js"
     },

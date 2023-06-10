@@ -101,7 +101,7 @@ const config = {
         publicPath: '/',
         filename: isProd ? 'js/[name].[contenthash:6].bundle.js' : 'js/[name].bundle.js',
         chunkFilename: isProd ? 'js/chunk_[name]_[contenthash:6].js' : 'js/chunk_[name].js',
-        clean: true, // 在生成文件之前清空 output 目录
+        // clean: true, // 在生成文件之前清空 output 目录
     },
     cache: {
         type: 'filesystem',
@@ -139,7 +139,10 @@ const config = {
     optimization: OptimizationMap[NODE_ENV],
     plugins: [
         new VueLoaderPlugin(),
-        new WebpackBar(),
+        new WebpackBar({
+			name: "Spa",
+			color: "#9013FE"
+		}),
         new HtmlWebpackPlugin({
             template: './public/index.spa.html',
             favicon: path.resolve(__dirname, '../public/favicon.ico'),
@@ -213,7 +216,7 @@ module.exports = (env, argv) => {
     const APP_ENV = env.APP_ENV || 'development';
     config.plugins.push(
         new Dotenv({
-            path: `./.env.${APP_ENV}`,
+            path: `./envVariable/client/.env.${APP_ENV}`,
         })
     );
     return new Promise((resolve) => {
