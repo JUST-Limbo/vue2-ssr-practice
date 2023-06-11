@@ -49,9 +49,6 @@ devDependencies:
   '@babel/core':
     specifier: ^7.22.1
     version: 7.22.1
-  '@babel/plugin-syntax-dynamic-import':
-    specifier: ^7.8.3
-    version: 7.8.3(@babel/core@7.22.1)
   '@babel/preset-env':
     specifier: ^7.22.4
     version: 7.22.4(@babel/core@7.22.1)
