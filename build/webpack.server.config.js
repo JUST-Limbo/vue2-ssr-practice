@@ -11,6 +11,7 @@ const chalk = require("chalk")
 const { defaultPort } = require("./setting")
 const address = require("address")
 
+// Error: Server-side bundle should have one single entry file. Avoid using CommonsChunkPlugin in the server config.
 delete base.optimization
 
 const NODE_ENV = process.env.NODE_ENV

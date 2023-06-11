@@ -54,7 +54,7 @@ const OptimizationMap = {
 		runtimeChunk: {
 			name: "runtime"
 		},
-		minimize: true, // 开发模式下如果不显式的将此处设置为true，下面的minimizer疑似不生效？试验过了前面的猜想极有可能是真的，应该在文档中的某个位置，但是我没找到，在css-minimizer-webpack-plugin这个文档中隐含的提到过一句
+		minimize: true,
 		minimizer: [
 			new TerserPlugin({
 				parallel: true, // 多线程
