@@ -23,7 +23,7 @@ const serverConfig = {
 	output: {
 		filename: "server-bundle.js",
 		libraryTarget: "commonjs2",
-		clean: true // 在生成文件之前清空 output 目录
+		// clean: true // 在生成文件之前清空 output 目录
 	},
 	optimization: {
 		splitChunks: false
