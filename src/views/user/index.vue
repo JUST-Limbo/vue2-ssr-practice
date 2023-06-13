@@ -9,7 +9,7 @@
 export default {
 	name: "User",
 	asyncData({ store, route, Cookie }) {
-		// return store.dispatch("userStore/getUserInfo")
+		return store.dispatch("userStore/getUserInfo")
 	}
 }
 </script>

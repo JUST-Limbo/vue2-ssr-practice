@@ -134,6 +134,7 @@ const config = {
         alias: {
             '@': path.resolve(__dirname, '../src'),
             vue$: 'vue/dist/vue.esm.js',
+            axiosInstance: "@/utils/request-client.js"
         },
     },
     optimization: OptimizationMap[NODE_ENV],

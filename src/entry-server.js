@@ -5,7 +5,9 @@ export default (context) => {
         const { app, router, store } = createApp();
 
         // 保存cookie
-        store.commit("cookieStore/save_cookie", context.cookie)
+        if (context.cookie) {
+            store.commit('cookieStore/save_cookie', context.cookie);
+        }
 
         router.push(context.url);
 

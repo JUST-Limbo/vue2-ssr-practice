@@ -10,10 +10,10 @@ export default {
 	actions: {
 		getUserInfo({ rootState }) {
 			return getUserInfo({
-				cookie: rootState.cookie
-			}).then((res) => {
-				console.log(res)
-			})
+                cookie: rootState.cookieStore.cookie,
+            }).then((res) => {
+                console.log(res);
+            });
 		}
 	}
 }
