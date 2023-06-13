@@ -110,8 +110,10 @@ function render(req, res) {
 
 	const context = {
 		title: "Vue HN 2.0", // default title
-		url: req.url
+		url: req.url,
+		cookie: req.headers.cookie
 	}
+	// console.log(req.url)
 	renderer.renderToString(context, (err, html) => {
 		if (err) {
 			return handleError(err)

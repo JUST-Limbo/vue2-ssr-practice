@@ -13,6 +13,11 @@ const clientConfig = {
 	entry: {
 		app: "./src/entry-client.js"
 	},
+	resolve: {
+		alias: {
+			axiosInstance: "@/utils/request-client.js"
+		}
+	},
 	plugins: [
 		new VueSSRClientPlugin(),
 		new WebpackBar({

@@ -31,6 +31,11 @@ const serverConfig = {
 	externals: nodeExternals({
 		allowlist: [/\.css$/]
 	}),
+	resolve: {
+		alias: {
+			axiosInstance: "@/utils/request-server.js"
+		}
+	},
 	plugins: [
 		new VueSSRServerPlugin(),
 		new WebpackBar({

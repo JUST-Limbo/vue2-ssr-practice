@@ -4,6 +4,9 @@ export default (context) => {
     return new Promise((resolve, reject) => {
         const { app, router, store } = createApp();
 
+        // 保存cookie
+        store.commit("cookieStore/save_cookie", context.cookie)
+
         router.push(context.url);
 
         router.onReady(() => {
