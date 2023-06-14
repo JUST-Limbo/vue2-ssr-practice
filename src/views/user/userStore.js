@@ -6,14 +6,18 @@ export default {
 		userInfo: {}
 	}),
 	getters: {},
-	mutations: {},
+	mutations: {
+		setUserInfo(state, userInfo) {
+			state.userInfo = userInfo
+		}
+	},
 	actions: {
-		getUserInfo({ rootState }) {
+		getUserInfo({ rootGetters, commit }) {
 			return getUserInfo({
-                cookie: rootState.cookieStore.cookie,
-            }).then((res) => {
-                console.log(res);
-            });
+				cookie: rootGetters.cookie
+			}).then((res) => {
+				commit("setUserInfo", res)
+			})
 		}
 	}
 }

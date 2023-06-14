@@ -9,6 +9,11 @@ Vue.use(Vuex)
 export function createStore() {
 	return new Vuex.Store({
 		state: {},
+		getters: {
+			cookie(state) {
+				return state.cookieStore.cookie
+			}
+		},
 		mutations: {},
 		actions: {},
 		modules: {

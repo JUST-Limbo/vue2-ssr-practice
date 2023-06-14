@@ -1,13 +1,30 @@
-import axios from 'axios/dist/node/axios.cjs';
-// import axios from 'axios'
+import axios from "axios/dist/node/axios.cjs"
 
-export default function (config) {
-	const service = axios.create({
+export default function (apiConfig) {
+	const axiosInstance = axios.create({
 		baseURL: process.env.VUE_APP_BASE_API,
 		timeout: 1000 * 30,
 		headers: {
 			"Content-Type": "application/json; charset=utf-8"
 		}
 	})
-	return service(config)
+	// 请求拦截器
+	axiosInstance.interceptors.request.use(
+		(config) => {
+			return config
+		},
+		(err) => {
+			return Promise.reject(err)
+		}
+	)
+	// 响应拦截器
+	axiosInstance.interceptors.response.use(
+		(res) => {
+			return res.data
+		},
+		(err) => {
+			return Promise.reject(err)
+		}
+	)
+	return axiosInstance(apiConfig)
 }

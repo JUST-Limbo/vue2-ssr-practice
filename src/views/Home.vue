@@ -1,6 +1,7 @@
 <template>
 	<div class="home">
-		<div class="red">11231223123</div>
+		<div class="testappcss">11231223123</div>
+		<el-button type="primary">主要按钮</el-button>
 	</div>
 </template>
 
@@ -9,9 +10,3 @@ export default {
 	name: "Home"
 }
 </script>
-
-<style lang="scss" scoped>
-.red {
-	color: red;
-}
-</style>
