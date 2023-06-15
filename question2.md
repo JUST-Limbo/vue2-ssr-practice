@@ -93,4 +93,4 @@ Vue.use(ElementUI)
 
 未尝试过使用`style-loader`替换`vue-style-loader`
 
-目前流传的观点是`MiniCssExtractPlugin.loader`不支持`hmr`热更新，而`style-loader和vue-style-loader`是支持的，但是我试了一下`MiniCssExtractPlugin.loader`也是能热更新的，或许是我的测试用例不充分？
+目前流传的观点是`MiniCssExtractPlugin.loader`不支持`hmr`热更新，而`style-loader和vue-style-loader`是支持的。文档表明，前者目前也是支持HMR的[webpack 中文文档 (docschina.org)](https://webpack.docschina.org/plugins/mini-css-extract-plugin#hot-module-reloading-hmr)，或许放弃`style-loader和vue-style-loader`全面使用`MiniCssExtractPlugin.loader`不失为一种可靠的选择？
