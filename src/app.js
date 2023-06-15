@@ -3,6 +3,7 @@ import App from './App.vue';
 import { createRouter } from './router';
 import { createStore } from './store';
 import { sync } from 'vuex-router-sync';
+import "./styles/testcssinappjs.css"
 
 import ElementUI from "element-ui"
 import "element-ui/lib/theme-chalk/index.css"

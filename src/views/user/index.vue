@@ -3,7 +3,7 @@
 		<div class="userinfo">userInfo</div>
 		<div>name:{{ userInfo.name }}</div>
 		<div>age:{{ userInfo.age }}</div>
-		<div>gender:{{ userInfo.gender }}</div>
+		<div class="testcssinappjs">gender:{{ userInfo.gender }}</div>
 		<a class="testappcss" href="/">123123</a>
 		<el-button type="primary">主要按钮</el-button>
 	</div>
