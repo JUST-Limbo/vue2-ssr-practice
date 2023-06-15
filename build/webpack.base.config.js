@@ -96,12 +96,7 @@ const config = {
 		filename: isProd ? "js/[name].[contenthash:6].bundle.js" : "js/[name].bundle.js",
 		chunkFilename: isProd ? "js/chunk_[name]_[contenthash:6].js" : "js/chunk_[name].js"
 	},
-	cache: {
-		type: "filesystem",
-		buildDependencies: {
-			config: [__filename]
-		}
-	},
+	cache: !isProd,
 	resolve: {
 		extensions: [".js", ".vue", ".json", ".ts", ".html"],
 		alias: {
