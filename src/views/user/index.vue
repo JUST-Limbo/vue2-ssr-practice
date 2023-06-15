@@ -1,10 +1,11 @@
 <template>
 	<div>
-		<div>userInfo</div>
+		<div class="userinfo">userInfo</div>
 		<div>name:{{ userInfo.name }}</div>
 		<div>age:{{ userInfo.age }}</div>
 		<div>gender:{{ userInfo.gender }}</div>
 		<a class="testappcss" href="/">123123</a>
+		<el-button type="primary">主要按钮</el-button>
 	</div>
 </template>
 
@@ -49,4 +50,8 @@ export default {
 }
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+.userinfo {
+	color: red;
+}
+</style>
