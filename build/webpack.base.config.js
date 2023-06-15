@@ -148,6 +148,21 @@ const config = {
 					},
 					{
 						test: /\.css$/i,
+						include: [/element-ui/],
+						use: [
+							MiniCssExtractPlugin.loader,
+							{
+								loader: "css-loader",
+								options: {
+									importLoaders: 1
+								}
+							},
+							"postcss-loader"
+						]
+					},
+					{
+						test: /\.css$/i,
+						exclude: [/element-ui/],
 						use: [
 							stylesHandler,
 							{

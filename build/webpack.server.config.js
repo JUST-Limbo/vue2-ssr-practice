@@ -66,6 +66,9 @@ module.exports = (env, args) => {
 		const port = args.port || defaultPort
 		const LOCAL_IP = address.ip()
 		serverConfig.plugins.push(
+            new MiniCssExtractPlugin({
+				filename: "styles/[name].css"
+			}),
 			new FriendlyErrorsWebpackPlugin({
 				compilationSuccessInfo: {
 					messages: [`  App running at:`, `  - Local:   ` + chalk.cyan(`http://localhost:${port}`), `  - Network: ` + chalk.cyan(`http://${LOCAL_IP}:${port}`)]

@@ -46,6 +46,11 @@ module.exports = (env, args) => {
 			})
 		)
 	} else {
+		clientConfig.plugins.push(
+			new MiniCssExtractPlugin({
+				filename: "styles/[name].css"
+			})
+		)
 		clientConfig.devtool = "cheap-module-source-map"
 	}
 	return merge(base, clientConfig)
