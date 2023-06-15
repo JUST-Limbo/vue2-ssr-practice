@@ -97,6 +97,7 @@ const config = {
 		chunkFilename: isProd ? "js/chunk_[name]_[contenthash:6].js" : "js/chunk_[name].js"
 	},
 	cache: {
+		// type: "memory",
 		type: "filesystem",
 		buildDependencies: {
 			config: [__filename]
