@@ -129,6 +129,7 @@ function render(req, res) {
 	})
 }
 
+// page route is here
 app.get(
 	"*",
 	isProd
