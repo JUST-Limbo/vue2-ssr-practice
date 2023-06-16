@@ -12,6 +12,8 @@ const { createBundleRenderer } = require("vue-server-renderer")
 const isProd = process.env.NODE_ENV === "production"
 const useMicroCache = process.env.MICRO_CACHE !== "false"
 
+const midWares = require("./middleware/index")
+
 const { getPort, serverInfo, SetHeaders } = require("../build/util")
 const { defaultPort } = require("../build/setting")
 const port = getPort(process.env.PORT || defaultPort)
@@ -86,6 +88,8 @@ app.use("/manifest.json", serve("../dist/manifest.json", true))
 // 1-second microcache.
 // https://www.nginx.com/blog/benefits-of-microcaching-nginx/
 app.use(microcache.cacheSeconds(1, (req) => useMicroCache && req.originalUrl))
+// 拦截器? 比如根据ua重定向pc和移动端
+app.use(...midWares)
 
 function render(req, res) {
 	const s = Date.now()

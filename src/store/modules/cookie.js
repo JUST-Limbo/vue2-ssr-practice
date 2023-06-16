@@ -6,7 +6,7 @@ export default {
 	mutations: {
 		save_cookie(state, cookie) {
 			// console.log("save_cookie", cookie)
-			state.cookie = cookie
+			state.cookie = cookie || ""
 		}
 	}
 }
