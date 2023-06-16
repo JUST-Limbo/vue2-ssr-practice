@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios"
 
 export class AxiosClass {
 	constructor(config) {
@@ -33,4 +33,9 @@ const service = new AxiosClass({
 	}
 })
 
-export default service
+export default function (apiConfig) {
+	if (!apiConfig.headers.cookie) {
+		delete apiConfig.headers.cookie
+	}
+	return service(apiConfig)
+}
