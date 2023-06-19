@@ -15,3 +15,11 @@ export function queryUserList(data) {
 		data
 	})
 }
+
+export function login(data) {
+	return REQUEST({
+		url: "/login",
+		method: "post",
+		data
+	})
+}
