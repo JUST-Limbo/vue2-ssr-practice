@@ -36,6 +36,12 @@ export default {
 			})
 				.then((res) => {
 					this.$message.success("login success")
+					const redirectUrl = this.$route.query.redirectUrl
+					if (redirectUrl) {
+						setTimeout(() => {
+							location.replace(decodeURIComponent(redirectUrl))
+						}, 1000)
+					}
 				})
 				.catch((err) => {
 					this.$message.error(err.msg)
