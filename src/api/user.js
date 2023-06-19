@@ -7,3 +7,11 @@ export function getUserInfo(headers) {
 		headers
 	})
 }
+
+export function queryUserList(data) {
+	return REQUEST({
+		url: "/queryuserlist",
+		method: "post",
+		data
+	})
+}

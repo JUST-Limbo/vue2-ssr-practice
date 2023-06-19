@@ -15,15 +15,21 @@ const routes = [
 		meta: { title: "user" },
 		component: () => import("@/views/user/index.vue")
 	},
-    {
-        path:'/login',
-        name:'Login',
-        meta:{title:'login'},
-        component: () => import("@/views/login/index.vue")
-    },
+	{
+		path: "/userlist",
+		name: "Userlist",
+		meta: { title: "Userlist" },
+		component: () => import("@/views/user/userList.vue")
+	},
+	{
+		path: "/login",
+		name: "Login",
+		meta: { title: "login" },
+		component: () => import("@/views/login/index.vue")
+	},
 	{
 		path: "/404",
-        name:'404',
+		name: "404",
 		component: () => import("@/views/404"),
 		meta: { title: "404" }
 	}

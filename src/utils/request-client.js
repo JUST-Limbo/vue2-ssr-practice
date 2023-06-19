@@ -34,7 +34,7 @@ const service = new AxiosClass({
 })
 
 export default function (apiConfig) {
-	if (!apiConfig.headers.cookie) {
+	if (apiConfig.headers && !apiConfig.headers.cookie) {
 		delete apiConfig.headers.cookie
 	}
 	return service(apiConfig)

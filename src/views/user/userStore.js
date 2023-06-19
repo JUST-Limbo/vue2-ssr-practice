@@ -28,7 +28,7 @@ export default {
                         })
                     }
                 }
-				commit("setUserInfo", res)
+				commit("setUserInfo", res.data)
 			})
 		}
 	}
