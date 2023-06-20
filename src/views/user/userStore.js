@@ -1,4 +1,3 @@
-import { atClient, atServer } from '@/utils/index.js'
 import { getUserInfo } from "@/api/user.js"
 
 export default {
@@ -16,20 +15,22 @@ export default {
 		getUserInfo({ rootGetters, commit }) {
 			return getUserInfo({
 				cookie: rootGetters.cookie
-			}).then((res) => {
-                if (atServer) {
-                    if(res.code == 401){
-                        return Promise.reject({
-                            url: `/login?redirectUrl=${encodeURIComponent('/user')}`,
-                        });
-                    }else if(res.code == 404){
-                        return Promise.reject({
-                            url:'/404'
-                        })
-                    }
-                }
-				commit("setUserInfo", res.data)
 			})
+				.then((res) => {
+					commit("setUserInfo", res.data)
+				})
+				.catch((err) => {
+					if (err.code == 401) {
+						return Promise.reject({
+							path: `/login?redirectUrl=${encodeURIComponent("/user")}`
+						})
+					} else if (err.code == 404) {
+						return Promise.reject({
+							path: "/404"
+						})
+					}
+                    return Promise.reject(err)
+				})
 		}
 	}
 }

@@ -1,4 +1,5 @@
 import axios from "axios/dist/node/axios.cjs"
+const successCode = [200, "200"]
 
 export default function (apiConfig) {
 	const axiosInstance = axios.create({
@@ -21,7 +22,13 @@ export default function (apiConfig) {
 	// 响应拦截器
 	axiosInstance.interceptors.response.use(
 		(res) => {
-			return res.data
+			const code = res.data.code
+			if (successCode.includes(code)) {
+				return res.data
+			} else {
+				// res.data:{code: '500', msg: 'xxx'}
+				return Promise.reject(res.data)
+			}
 		},
 		(err) => {
 			return Promise.reject(err)

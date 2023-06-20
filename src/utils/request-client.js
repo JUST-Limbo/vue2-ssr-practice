@@ -43,8 +43,10 @@ const service = new AxiosClass({
 })
 
 export default function (apiConfig) {
-	if (apiConfig.headers && !apiConfig.headers.cookie) {
-		delete apiConfig.headers.cookie
+	// Refused to set unsafe header "cookie"
+	if (apiConfig.headers) {
+		const headers = apiConfig.headers
+		delete headers.cookie
 	}
 	return service(apiConfig)
 }

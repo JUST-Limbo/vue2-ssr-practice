@@ -41,7 +41,11 @@ export default {
 						setTimeout(() => {
 							location.replace(decodeURIComponent(redirectUrl))
 						}, 1000)
-					}
+					}else{
+                        this.$router.replace({
+                            name:'Home'
+                        })
+                    }
 				})
 				.catch((err) => {
 					this.$message.error(err.msg)

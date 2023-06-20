@@ -100,8 +100,8 @@ function render(req, res) {
 	})
 
 	const handleError = (err) => {
-		if (err.url) {
-			res.redirect(err.url)
+		if (err.path) {
+			res.redirect(err.path)
 		} else if (err.code === 404) {
 			res.status(404).send("404 | Page Not Found")
 		} else {

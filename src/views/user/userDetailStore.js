@@ -1,5 +1,4 @@
 import { queryUserDetailById } from "@/api/user.js"
-import { atClient, atServer } from "@/utils/index.js"
 
 export default {
 	namespaced: true,
@@ -12,17 +11,19 @@ export default {
 		}
 	},
 	actions: {
-		queryUserDetailById({ commit }, params) {
-			return queryUserDetailById(params).then((res) => {
-				if (atServer) {
-					if (res.code == 500) {
+		queryUserDetailById({ commit, rootState }, { id }) {
+			return queryUserDetailById({ id })
+				.then((res) => {
+					commit("set_userdetail", res.data)
+				})
+				.catch((err) => {
+					if (err.code == 500) {
 						return Promise.reject({
-							url: "/404"
+							path: "/404"
 						})
 					}
-				}
-				commit("set_userdetail", res.data)
-			})
+					return Promise.reject(err)
+				})
 		}
 	}
 }
