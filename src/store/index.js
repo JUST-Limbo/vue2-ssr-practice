@@ -3,6 +3,7 @@ import Vuex from "vuex"
 
 import userStore from "@/views/user/userStore"
 import userListStore from "@/views/user/userListStore"
+import userDetailStore from "@/views/user/userDetailStore.js"
 import cookieStore from "./modules/cookie"
 
 Vue.use(Vuex)
@@ -18,7 +19,8 @@ export function createStore() {
 		mutations: {},
 		actions: {},
 		modules: {
-            userListStore,
+			userDetailStore,
+			userListStore,
 			userStore,
 			cookieStore
 		}

@@ -23,3 +23,9 @@ export function login(data) {
 		data
 	})
 }
+
+export function queryUserDetailById(params) {
+	return REQUEST({
+		url: `/user/${params.id}`
+	})
+}

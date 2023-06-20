@@ -15,6 +15,12 @@ export default {
 			name: "Userlist",
 			meta: { title: "Userlist" },
 			component: () => import("@/views/user/userList.vue")
+		},
+		{
+			path: "/user/:id",
+			name: "UserDetail",
+			meta: { title: "UserDetail" },
+			component: () => import("@/views/user/userDetail.vue")
 		}
 	]
 }

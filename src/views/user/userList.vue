@@ -21,13 +21,27 @@
 			<el-table-column prop="name" label="姓名" width="180"> </el-table-column>
 			<el-table-column prop="age" label="年龄"> </el-table-column>
 			<el-table-column prop="gender" label="性别"> </el-table-column>
+			<el-table-column label="操作">
+				<template #default="{ row }">
+					<router-link
+						:to="{
+							name: 'UserDetail',
+							params: {
+								id: row.id
+							}
+						}"
+					>
+						详情
+					</router-link>
+				</template>
+			</el-table-column>
 		</el-table>
 		<el-pagination :current-page.sync="formModel.page" :page-size.sync="formModel.pageSize" layout="total, sizes,prev, pager, next" :total="total" @size-change="pagination" @current-change="pagination"> </el-pagination>
 		<div>原生table的渲染不同于el-table,右键查看源码可以观察到,服务器直出内容中有表格DOM节点</div>
 		<div class="red">
-            <div>注意:table标签族在使用时要显式的声明tbody,否则会报hydrating fail</div>
-            <a href="https://blog.lichter.io/posts/vue-hydration-error/">https://blog.lichter.io/posts/vue-hydration-error/</a>
-        </div>
+			<div>注意:table标签族在使用时要显式的声明tbody,否则会报hydrating fail</div>
+			<a href="https://blog.lichter.io/posts/vue-hydration-error/" target="_blank">https://blog.lichter.io/posts/vue-hydration-error/</a>
+		</div>
 		<table>
 			<tbody>
 				<tr v-for="item in userList" :key="item.id">
@@ -35,6 +49,18 @@
 					<td>{{ item.name }}</td>
 					<td>{{ item.age }}</td>
 					<td>{{ item.gender }}</td>
+					<td>
+						<router-link
+							:to="{
+								name: 'UserDetail',
+								params: {
+									id: item.id
+								}
+							}"
+						>
+							详情
+						</router-link>
+					</td>
 				</tr>
 			</tbody>
 		</table>
@@ -54,6 +80,7 @@ export default {
 		return store.dispatch("userListStore/fetchUserList", {
 			page: (query && Number(query.page)) || 1,
 			pageSize: (query && Number(query.pageSize)) || 10,
+			gender: (query && query.gender) || "",
 			name: (query && query.name) || ""
 		})
 	},
