@@ -24,7 +24,7 @@ const routes = [
 		component: () => import("@/views/404"),
 		meta: { title: "404" }
 	},
-	{ path: "*", redirect: "/404" }
+	{ path: "*", component: () => import("@/views/404"), meta: { title: "404" } }
 ]
 
 // 跳转相同路由报错
