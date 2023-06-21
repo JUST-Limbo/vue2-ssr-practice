@@ -13,7 +13,7 @@
         "build:spa": "webpack --node-env production --env APP_ENV=production --config ./build/webpack.spa.config.js",
         "build:all": "concurrently \"npm run build:ssr\" \"npm run build:spa\"",
         "build": "concurrently \"npm run build:ssr\" \"npm run build:spa\"",
-        "preview": "npm run build && cross-env NODE_ENV=production node server",
+        "preview": "npm run build && cross-env NODE_ENV=production MICRO_CACHE=true node server",
         "app-info": "node ./build/generateAppInfo.js"
     },
     "keywords": [],
