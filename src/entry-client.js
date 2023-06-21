@@ -1,4 +1,9 @@
 import Vue from "vue"
+import { Message } from "element-ui"
+import NProgress from "nprogress"
+import "nprogress/nprogress.css"
+NProgress.configure({ showSpinner: false })
+
 import { createApp } from "./app"
 
 // a global mixin that calls `asyncData` when a route component's params change
@@ -59,7 +64,8 @@ router.onReady(() => {
 			return next()
 		}
 
-		// 这里如果有加载指示器 (loading indicator)，就触发
+		// loading start
+		NProgress.start()
 
 		Promise.all(
 			activated.map((c) => {
@@ -69,11 +75,16 @@ router.onReady(() => {
 			})
 		)
 			.then(() => {
-				// 停止加载指示器(loading indicator)
-
+				// loading done
+				NProgress.done()
 				next()
 			})
-			.catch(next)
+			.catch((err) => {
+				// loading done
+				NProgress.done()
+				Message.error(err.msg ? err.msg : err)
+				next(err)
+			})
 	})
 
 	app.$mount("#app")

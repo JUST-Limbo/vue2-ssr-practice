@@ -22,11 +22,13 @@ export default {
 				.catch((err) => {
 					if (err.code == 401) {
 						return Promise.reject({
-							path: `/login?redirectUrl=${encodeURIComponent("/user")}`
+							path: `/login?redirectUrl=${encodeURIComponent("/user")}`,
+                            ...err
 						})
 					} else if (err.code == 404) {
 						return Promise.reject({
-							path: "/404"
+							path: "/404",
+                            ...err
 						})
 					}
                     return Promise.reject(err)

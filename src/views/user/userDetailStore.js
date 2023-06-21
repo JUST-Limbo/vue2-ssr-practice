@@ -19,7 +19,8 @@ export default {
 				.catch((err) => {
 					if (err.code == 500) {
 						return Promise.reject({
-							path: "/404"
+							path: "/404",
+                            ...err
 						})
 					}
 					return Promise.reject(err)
