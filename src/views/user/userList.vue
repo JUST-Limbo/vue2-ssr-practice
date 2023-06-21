@@ -73,29 +73,44 @@ import { filterValidValues } from "@/utils"
 import { createNamespacedHelpers } from "vuex"
 const { mapState } = createNamespacedHelpers("userListStore")
 
+function getFormModelFromRoute(route) {
+	const query = route.query
+	return {
+		name: (query && query.name) || "",
+		gender: (query && query.gender) || "",
+		page: (query && Number(query.page)) || 1,
+		pageSize: (query && Number(query.pageSize)) || 10
+	}
+}
+
 export default {
 	name: "UserList",
 	asyncData({ store, route }) {
-		const query = route.query
-		return store.dispatch("userListStore/fetchUserList", {
-			page: (query && Number(query.page)) || 1,
-			pageSize: (query && Number(query.pageSize)) || 10,
-			gender: (query && query.gender) || "",
-			name: (query && query.name) || ""
-		})
+		return store.dispatch("userListStore/fetchUserList", { ...getFormModelFromRoute(route) })
 	},
 	computed: {
 		...mapState(["userList", "total"])
 	},
 	data() {
-		const query = this.$route.query
 		return {
-			formModel: {
-				name: (query && query.name) || "",
-				gender: (query && query.gender) || "",
-				page: (query && Number(query.page)) || 1,
-				pageSize: (query && Number(query.pageSize)) || 10
-			}
+			formModel: { ...getFormModelFromRoute(this.$route) }
+		}
+	},
+	beforeRouteUpdate(to, from, next) {
+		this.formModel = { ...getFormModelFromRoute(to) }
+		const { asyncData } = this.$options
+		if (asyncData) {
+			asyncData({
+				store: this.$store,
+				route: to
+			})
+				.then(next)
+				.catch((err) => {
+					Message.error(err.msg ? err.msg : err)
+					next(err)
+				})
+		} else {
+			next()
 		}
 	},
 	methods: {
