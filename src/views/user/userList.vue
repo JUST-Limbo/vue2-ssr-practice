@@ -1,6 +1,7 @@
 <template>
 	<div>
 		<div>列表页</div>
+        <div class="red">注意观察beforeRouteUpdate</div>
 		<div>el-table的表格DOM节点看起来是在client端进行渲染的,右键查看源码发现直出的DOM结构里没渲染</div>
 		<el-form :inline="true" :model="formModel" size="small">
 			<el-form-item label="姓名">
