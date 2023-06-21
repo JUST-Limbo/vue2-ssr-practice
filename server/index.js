@@ -11,6 +11,8 @@ const resolve = (file) => path.resolve(__dirname, file)
 const { createBundleRenderer } = require("vue-server-renderer")
 const isProd = process.env.NODE_ENV === "production"
 const useMicroCache = process.env.MICRO_CACHE !== "false"
+// const useMicroCache = true
+const isCacheable = require("./config/cachePage")
 
 const midWares = require("./middleware/index")
 
@@ -87,7 +89,8 @@ app.use("/manifest.json", serve("../dist/manifest.json", true))
 // headers.
 // 1-second microcache.
 // https://www.nginx.com/blog/benefits-of-microcaching-nginx/
-app.use(microcache.cacheSeconds(1, (req) => useMicroCache && req.originalUrl))
+// cache 1 hour
+app.use(microcache.cacheSeconds(1 * 60 * 60, (req) => useMicroCache && isCacheable(req)))
 // 拦截器? 比如根据ua重定向pc和移动端
 app.use(...midWares)
 

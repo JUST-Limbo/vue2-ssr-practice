@@ -21,6 +21,7 @@ import { login } from "@/api/user.js"
 
 export default {
 	name: "Login",
+	serverCacheKey: () => "login",
 	data() {
 		return {
 			loginFormModel: {
@@ -41,11 +42,11 @@ export default {
 						setTimeout(() => {
 							location.replace(decodeURIComponent(redirectUrl))
 						}, 1000)
-					}else{
-                        this.$router.replace({
-                            name:'Home'
-                        })
-                    }
+					} else {
+						this.$router.replace({
+							name: "Home"
+						})
+					}
 				})
 				.catch((err) => {
 					this.$message.error(err.msg)

@@ -4,6 +4,7 @@
 
 <script>
 export default {
-	name: "NotFound"
+	name: "NotFound",
+	serverCacheKey: () => "404"
 }
 </script>

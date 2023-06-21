@@ -24,6 +24,7 @@
 
 <script>
 export default {
-	name: "Home"
+	name: "Home",
+	serverCacheKey: () => "Home"
 }
 </script>

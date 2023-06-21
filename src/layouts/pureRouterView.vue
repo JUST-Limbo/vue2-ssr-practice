@@ -4,6 +4,7 @@
 
 <script>
 export default {
-	name: "PureRouterView"
+	name: "PureRouterView",
+    serverCacheKey: () => "PureRouterView",
 }
 </script>
