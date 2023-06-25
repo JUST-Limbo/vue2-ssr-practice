@@ -23,6 +23,9 @@ export default {
 			id: params.id
 		})
 	},
+	title() {
+		return "用户详情：" + this.userDetail.name
+	},
 	computed: {
 		...mapState(["userDetail"])
 	}
