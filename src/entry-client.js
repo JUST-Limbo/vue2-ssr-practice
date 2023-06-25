@@ -5,13 +5,38 @@ NProgress.configure({ showSpinner: false })
 
 import { createApp } from "./app"
 
-export const { app, router, store } = createApp()
+export const { app, router, store } = createApp({
+    // 客户端 router.beforeEach
+    clientBeforeEach: ({ router, store }) => {
+        router.beforeEach((to, from, next) => {
+            next();
+        });
+    },
+});
 
 if (window.__INITIAL_STATE__) {
 	store.replaceState(window.__INITIAL_STATE__)
 }
-
 router.onReady(() => {
+    if (!window.__INITIAL_STATE__) {
+        NProgress.start();
+        const matched = router.getMatchedComponents();
+        Promise.all(
+            matched.map((c) => {
+                if (c.asyncData) {
+                    return c.asyncData({ store, route: router.currentRoute });
+                }
+            })
+        )
+            .then(() => {
+                NProgress.done();
+            })
+            .catch((err) => {
+                NProgress.done();
+                Message.error(err.msg ? err.msg : err);
+            });
+    }
+
 	// 添加路由钩子函数，用于处理 asyncData.
 	// 在初始路由 resolve 后执行，
 	// 以便我们不会二次预取(double-fetch)已有的数据。
