@@ -11,7 +11,6 @@ export const { app, router, store } = createApp({
 		router.beforeEach((to, from, next) => {
 			console.log(to)
 			if (to.path == "/baidu") {
-				console.log(14)
 				return (window.location.href = "https://baidu.com")
 			}
 			next()
