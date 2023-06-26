@@ -21,6 +21,7 @@ if (window.__INITIAL_STATE__) {
 	store.replaceState(window.__INITIAL_STATE__)
 }
 router.onReady(() => {
+    // spa场景
 	if (!window.__INITIAL_STATE__) {
 		NProgress.start()
 		const matched = router.getMatchedComponents()
