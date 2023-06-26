@@ -9,7 +9,6 @@ export const { app, router, store } = createApp({
 	// 客户端 router.beforeEach
 	clientBeforeEach: ({ router, store }) => {
 		router.beforeEach((to, from, next) => {
-			console.log(to)
 			if (to.path == "/baidu") {
 				return (window.location.href = "https://baidu.com")
 			}
