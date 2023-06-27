@@ -10,7 +10,7 @@
 				color: 'black'
 			}"
 		>
-			<el-descriptions-item label="登录">
+			<el-descriptions-item label="登录 页面级别缓存">
 				<router-link to="/login">/login</router-link>
 			</el-descriptions-item>
 		</el-descriptions>
@@ -22,17 +22,17 @@
 				color: 'black'
 			}"
 		>
-			<el-descriptions-item label="当前登录用户信息">
+			<el-descriptions-item label="当前登录用户信息 server端预渲染时携带客户端的cookie">
 				<router-link to="/user">/user</router-link>
 			</el-descriptions-item>
-			<el-descriptions-item label="用户列表">
+			<el-descriptions-item label="用户列表 路由重用beforeRouteUpdate场景">
 				<router-link to="/userlist">/userlist</router-link>
 			</el-descriptions-item>
-			<el-descriptions-item label="用户详情">
+            <el-descriptions-item label="用户详情 预渲染期望场景">
+                <router-link to="/user/103">/user/103</router-link>
+            </el-descriptions-item>
+			<el-descriptions-item label="用户详情 预渲染失败重定向案例">
 				<router-link to="/user/1">/user/1 查询不到会跳404</router-link>
-			</el-descriptions-item>
-			<el-descriptions-item label="用户详情">
-				<router-link to="/user/103">/user/103</router-link>
 			</el-descriptions-item>
 		</el-descriptions>
 		<el-descriptions
