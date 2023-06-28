@@ -6,13 +6,13 @@
     "scripts": {
         "dev": "npm run dev:ssr",
         "dev:ssr": "cross-env NODE_ENV=development node server",
-        "dev:spa": "webpack serve --node-env development --env APP_ENV=development --config ./build/webpack.spa.config.js",
+        "dev:csr": "webpack serve --node-env development --env APP_ENV=development --config ./build/webpack.csr.config.js",
         "build:client": "webpack --node-env production --env APP_ENV=production --config ./build/webpack.client.config.js",
         "build:server": "webpack --node-env production --env APP_ENV=production --config ./build/webpack.server.config.js",
         "build:ssr": "concurrently \"npm run build:server\" \"npm run build:client\"",
-        "build:spa": "webpack --node-env production --env APP_ENV=production --config ./build/webpack.spa.config.js",
-        "build:all": "concurrently \"npm run build:ssr\" \"npm run build:spa\"",
-        "build": "concurrently \"npm run build:ssr\" \"npm run build:spa\"",
+        "build:csr": "webpack --node-env production --env APP_ENV=production --config ./build/webpack.csr.config.js",
+        "build:all": "concurrently \"npm run build:ssr\" \"npm run build:csr\"",
+        "build": "concurrently \"npm run build:ssr\" \"npm run build:csr\"",
         "preview": "npm run build && cross-env NODE_ENV=production MICRO_CACHE=true node server",
         "app-info": "node ./build/generateAppInfo.js"
     },

@@ -141,11 +141,11 @@ const config = {
     plugins: [
         new VueLoaderPlugin(),
         new WebpackBar({
-			name: "Spa",
+			name: "Csr",
 			color: "#9013FE"
 		}),
         new HtmlWebpackPlugin({
-            template: './public/index.spa.html',
+            template: './public/index.csr.html',
             favicon: path.resolve(__dirname, '../public/favicon.ico'),
         }),
         new CopyPlugin({
