@@ -57,7 +57,7 @@
 			</el-descriptions-item>
 			<el-descriptions-item label="差异分析">
 				<div>ssr模式下a标签的重定向实际上是访问服务器使服务器渲染 /baidu 路由页面,通过路由中间件 /server/middleware/redirect进行302重定向</div>
-				<div>好处是能在renderToString直接 302 重定向,如果浏览器渲染完成再重定向则会浪费服务器渲染页面的资源</div>
+				<div>好处是能在renderToString之前直接 302 重定向,如果浏览器渲染完成再重定向则会浪费服务器渲染页面的资源</div>
 			</el-descriptions-item>
 		</el-descriptions>
 	</div>
