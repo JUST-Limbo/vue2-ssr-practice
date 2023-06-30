@@ -21,7 +21,7 @@ if (window.__INITIAL_STATE__) {
 	store.replaceState(window.__INITIAL_STATE__)
 }
 router.onReady(() => {
-    // CSR场景
+	// CSR场景
 	if (!window.__INITIAL_STATE__) {
 		NProgress.start()
 		const matched = router.getMatchedComponents()
@@ -85,3 +85,9 @@ router.onReady(() => {
 
 	app.$mount("#app")
 })
+
+// service worker
+if (("https:" === location.protocol || "localhost" === location.hostname) && navigator.serviceWorker) {
+	console.log("register sw")
+	navigator.serviceWorker.register("/service-worker.js", { scope: "/" })
+}
