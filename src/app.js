@@ -4,8 +4,10 @@ import { createRouter } from './router';
 import { createStore } from './store';
 import { sync } from 'vuex-router-sync';
 
-import titleMixin from '@/utils/title'
-Vue.mixin(titleMixin)
+// import titleMixin from '@/utils/title'
+// Vue.mixin(titleMixin)
+import VueMeta from "vue-meta"
+Vue.use(VueMeta)
 
 import ElementUI from "element-ui"
 import "element-ui/lib/theme-chalk/index.css"

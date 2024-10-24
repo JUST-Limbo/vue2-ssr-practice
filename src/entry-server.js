@@ -3,7 +3,8 @@ import { createApp } from './app';
 export default (context) => {
     return new Promise((resolve, reject) => {
         const { app, router, store } = createApp();
-
+        const meta = app.$meta()
+        context.meta = meta
         // 保存cookie
         if (context.cookie) {
             store.commit('cookieStore/save_cookie', context.cookie);
