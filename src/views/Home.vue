@@ -28,9 +28,9 @@
 			<el-descriptions-item label="用户列表 路由重用beforeRouteUpdate场景">
 				<router-link to="/userlist">/userlist</router-link>
 			</el-descriptions-item>
-            <el-descriptions-item label="用户详情 预渲染期望场景">
-                <router-link to="/user/103">/user/103</router-link>
-            </el-descriptions-item>
+			<el-descriptions-item label="用户详情 预渲染期望场景">
+				<router-link to="/user/103">/user/103</router-link>
+			</el-descriptions-item>
 			<el-descriptions-item label="用户详情 预渲染失败重定向案例">
 				<router-link to="/user/1">/user/1 查询不到会跳404</router-link>
 			</el-descriptions-item>
@@ -66,6 +66,21 @@
 <script>
 export default {
 	name: "Home",
-	serverCacheKey: () => "Home"
+	// serverCacheKey: () => "Home",
+	metaInfo: {
+		title: "title from home.vue",
+		meta: [
+			{
+				vmid: "keywords",
+				name: "keywords",
+				content: "keywords from home.vue"
+			},
+			{
+				vmid: "description",
+				name: "description",
+				content: "description from home.vue"
+			}
+		]
+	}
 }
 </script>

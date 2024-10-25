@@ -25,7 +25,22 @@ import { login } from "@/api/user.js"
 
 export default {
 	name: "Login",
-	serverCacheKey: () => "login",
+	// serverCacheKey: () => "login",
+    metaInfo: {
+		title: "title from login.vue",
+		meta: [
+			{
+				vmid: "keywords",
+				name: "keywords",
+				content: "keywords from login.vue"
+			},
+			{
+				vmid: "description",
+				name: "description",
+				content: "description from login.vue"
+			}
+		]
+	},
 	data() {
 		return {
 			loginFormModel: {
