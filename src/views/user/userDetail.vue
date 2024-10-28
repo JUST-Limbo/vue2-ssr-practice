@@ -23,6 +23,21 @@ export default {
 			id: params.id
 		})
 	},
+    metaInfo: {
+		title: "title from user/userDetail.vue",
+		meta: [
+			{
+				vmid: "keywords",
+				name: "keywords",
+				content: "keywords from user/userDetail.vue"
+			},
+			{
+				vmid: "description",
+				name: "description",
+				content: "description from user/userDetail.vue"
+			}
+		]
+	},
 	title() {
 		return "用户详情：" + this.userDetail.name
 	},

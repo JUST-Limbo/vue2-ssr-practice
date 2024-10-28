@@ -16,6 +16,21 @@ export default {
 	asyncData({ store }) {
 		return store.dispatch("userStore/getUserInfo")
 	},
+	metaInfo: {
+		title: "title from user/index.vue",
+		meta: [
+			{
+				vmid: "keywords",
+				name: "keywords",
+				content: "keywords from user/index.vue"
+			},
+			{
+				vmid: "description",
+				name: "description",
+				content: "description from user/index.vue"
+			}
+		]
+	},
 	computed: {
 		...mapState(["userInfo"])
 	}
